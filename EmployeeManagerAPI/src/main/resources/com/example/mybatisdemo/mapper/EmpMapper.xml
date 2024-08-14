@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- UserMapper.xml -->
+<mapper namespace="com.example.mybatisdemo.mapper.EmpMapper">
+    <select id="selectbyname" resultType="com.example.mybatisdemo.pojo.Emp">
+        select * from emp
+        <where>
+            <if test="name != null and name != ''">
+                name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="startTime != null and endTime != null">
+                and entrydate between #{startTime} and #{endTime}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+    <select id="selectbyids" resultType="com.example.mybatisdemo.pojo.Emp">
+        select * from emp
+        where
+        id in
+        <foreach item="id" index="index" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <update id="updateEmp">
+        update emp
+        <set>
+        <if test="username != null"> username = #{username},</if>
+        <if test="name != null"> name = #{name},</if>
+        <if test="gender != null"> gender = #{gender},</if>
+        <if test="image != null"> image = #{image},</if>
+        <if test="dept_id != null"> dept_id = #{dept_id},</if>
+        <if test="job != null"> job = #{job},</if>
+        <if test="entrydate != null"> entrydate = #{entrydate},</if>
+        update_time = #{update_time}
+        </set>
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteByIds">
+        DELETE FROM emp
+        WHERE id IN
+        <foreach item="id" index="index" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <insert id="insertEmp">
+        INSERT INTO emp(username, password, name, gender, image, job, entrydate,dept_id, create_time, update_time) VALUES
+        (#{username},
+        <if test="password == null">
+            '123456'
+        </if>
+        <if test="password != null">
+            #{password}
+        </if>
+        ,#{name},#{gender},#{image},#{job},#{entrydate},#{dept_id},#{create_time},#{update_time})
+    </insert>
+</mapper>
