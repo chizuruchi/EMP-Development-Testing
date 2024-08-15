@@ -54,6 +54,8 @@
 │  │  ├─dept_test.py                        # 部门模块的测试用例
 │  │  └─emp_test.py                         # 员工模块的测试用例
 │  ├─lib                                    # 测试库
+│  │  ├─testcase.xlsx                       # 存放测试用例输入数据及验证数据
+│  │  ├─LoadExceldata.py                    # 加载测试用例输入数据及验证数据
 │  │  ├─login.py                            # 登录模块的测试逻辑
 │  │  ├─dept.py                             # 部门模块的测试逻辑
 │  │  └─emp.py                              # 员工模块的测试逻辑
