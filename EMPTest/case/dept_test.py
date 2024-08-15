@@ -1,5 +1,5 @@
 import pytest
-from utils.dept import dept_instance
+from lib.dept import dept_instance
 
 
 class Test_dept:

@@ -1,7 +1,10 @@
 import pytest
-from utils.LoadExceldata import LoadSearchData, LoadAddData
-from utils.emp import emp_instance
+from lib.LoadExceldata import LoadSearchData, LoadAddData
+from lib.emp import emp_instance
 import cv2
+from io import BytesIO
+import requests
+import numpy as np
 
 
 search_testData = LoadSearchData("searchemp")
@@ -82,7 +85,7 @@ def test_emp_134_138(testcase, ids, code, msg):
 
 
 @pytest.mark.parametrize('testcase, file, code, msg', [
-    ("emp_139", r"test.jpg", 1, "success"),
+    ("emp_139", r"C:\Users\chizuru\Desktop\test.jpg", 1, "success"),
     ("emp_140", r"test.txt", 1, "success"),
     ("emp_141", r"test1.jpg", 0, "fail"),
     ("emp_142", None, 0, "fail"),
@@ -93,6 +96,14 @@ def test_emp_139_143(testcase, file, code, msg):
     assert response["code"] == code
     assert response["msg"] == msg
     if code:
-        assert cv2.imread(file) == cv2.imread(response["data"])
+        actual_image = cv2.imread(file)
+
+        # 下载并读取服务器返回的图片
+        response_image = requests.get(response["data"])
+        image_stream = BytesIO(response_image.content)
+        expect_image = cv2.imdecode(np.frombuffer(image_stream.read(), np.uint8), cv2.IMREAD_COLOR)
+
+        # 使用 numpy 进行图像数组比较
+        assert np.array_equal(actual_image, expect_image)
 
 

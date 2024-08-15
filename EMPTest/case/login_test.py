@@ -1,7 +1,7 @@
 from utils.login import login_instance
 import pytest
 from cfg import headers
-from utils.dept import dept_instance
+from lib.dept import dept_instance
 
 class Test_login:
     @pytest.mark.parametrize('body', [
