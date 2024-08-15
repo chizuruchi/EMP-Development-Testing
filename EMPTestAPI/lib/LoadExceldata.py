@@ -4,7 +4,7 @@ import json
 
 
 def LoadSearchData(sheetName):
-    df = pd.read_excel(r'E:\softwareTest\EMP-Development-Testing\EMPTest\utils\testcase.xlsx', engine='openpyxl', sheet_name=sheetName)
+    df = pd.read_excel('testcase.xlsx', engine='openpyxl', sheet_name=sheetName)
 
     search_data = df.to_dict(orient='records')
 
@@ -20,7 +20,7 @@ def LoadSearchData(sheetName):
 
 
 def LoadAddData(sheetName):
-    df = pd.read_excel(r'E:\softwareTest\EMP-Development-Testing\EMPTest\utils\testcase.xlsx', engine='openpyxl',
+    df = pd.read_excel('testcase.xlsx', engine='openpyxl',
                        sheet_name=sheetName)
 
     search_data = df.to_dict(orient='records')
