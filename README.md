@@ -48,7 +48,7 @@
 │              ├─EmpView.vue                 # 员工视图组件
 │              └─LoginView.vue               # 登录视图组件
 │
-├─EMPTestAPI
+├─EMPTestAPI                                # 接口自动化测试项目
 │  ├─case                                   # 测试用例
 │  │  ├─login_test.py                       # 登录模块的测试用例
 │  │  ├─dept_test.py                        # 部门模块的测试用例
