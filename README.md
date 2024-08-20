@@ -62,4 +62,17 @@
 │  │  └─emp.py                              # 员工模块的测试逻辑
 │  └─cfg.py                                 # 配置文件，包含全局配置
 │
-├─TestCase.xlsx                             # 测试用例数据文件
+├─EMPTestUI                                 # 功能自动化测试项目
+│  ├─case                                   # 测试用例
+│  │  ├─login_test.py                       # 登录模块的测试用例
+│  │  ├─dept_test.py                        # 部门模块的测试用例
+│  │  └─emp_test.py                         # 员工模块的测试用例
+│  ├─lib                                    # 测试库
+│  │  ├─testcase.xlsx                       # 存放测试用例输入数据及验证数据
+│  │  ├─LoadExceldata.py                    # 加载测试用例输入数据及验证数据
+│  │  ├─login.py                            # 登录模块的测试逻辑
+│  │  ├─dept.py                             # 部门模块的测试逻辑
+│  │  └─emp.py                              # 员工模块的测试逻辑
+│  └─cfg.py                                 # 配置文件，包含全局配置
+│
+├─员工管理系统-测试用例.xlsx                 # 测试用例数据文件
