@@ -62,3 +62,5 @@ build/
 # Ensure to include certain build directories
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+__pycache__/
