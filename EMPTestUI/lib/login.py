@@ -14,7 +14,9 @@ class Login_UI:
         # 禁用Chrome的日志记录功能
         options.add_experimental_option('excludeSwitches', ['enable=logging'])
 
-        self.wd = webdriver.Chrome(options=options)
+        service = Service(r'D:\tool\chromedriver-win64\chromedriver.exe')
+
+        self.wd = webdriver.Chrome(service=service, options=options)
         # 设置隐式等待时间为10秒
         self.wd.implicitly_wait(10)
 
